@@ -191,17 +191,17 @@ export default function Page() {
 
     // === 슬라이드 3: 일정 ===
     h += '<div class="s" style="background:#f5f4ef;display:flex;flex-direction:column">'
-      + '<div class="t" style="background:#1a1a2e;color:#fff;padding:24px 36px;text-align:center;font-size:30px;font-weight:800">' + d.month + '월 주요 일정</div>'
-      + '<div style="flex:1;padding:20px 24px;display:flex;flex-direction:column;justify-content:center;gap:0">'
+      + '<div class="t" style="background:#1a1a2e;color:#fff;padding:18px 36px;text-align:center;font-size:28px;font-weight:800">' + d.month + '월 주요 일정</div>'
+      + '<div style="flex:1;padding:16px 20px;display:flex;flex-direction:column;justify-content:center;gap:0">'
       + d.schedules.map(function(s) {
-        return '<div style="background:#fff;border-radius:14px;padding:22px 28px;margin-bottom:14px;display:flex;align-items:center;gap:20px">'
-          + '<div style="background:#d35400;color:#fff;font-weight:900;padding:12px 20px;border-radius:12px;font-size:22px;min-width:70px;text-align:center">' + s.date + '</div>'
-          + '<div style="font-size:22px;font-weight:600;color:#222">' + s.event + '</div></div>';
+        return '<div style="background:#fff;border-radius:12px;padding:16px 20px;margin-bottom:10px;display:flex;align-items:center;gap:16px">'
+          + '<div style="background:#d35400;color:#fff;font-weight:900;padding:10px 16px;border-radius:10px;font-size:20px;min-width:60px;text-align:center">' + s.date + '</div>'
+          + '<div style="font-size:20px;font-weight:600;color:#222">' + s.event + '</div></div>';
       }).join('')
       + '</div>'
-      + '<div style="background:linear-gradient(135deg,#d35400,#e67e22);padding:28px 36px;display:flex;justify-content:space-between;align-items:center">'
-      + '<div style="color:#fff"><div style="font-size:18px;opacity:0.8;margin-bottom:4px">교육 상담 문의</div><div style="font-size:28px;font-weight:900">' + d.phone + '</div></div>'
-      + '<div style="color:#fff;text-align:right;font-size:18px;opacity:0.8">더몬스터학원<br>광주 계림동</div></div></div>';
+      + '<div style="background:linear-gradient(135deg,#d35400,#e67e22);padding:22px 32px;display:flex;justify-content:space-between;align-items:center">'
+      + '<div style="color:#fff"><div style="font-size:16px;opacity:0.8;margin-bottom:2px">교육 상담 문의</div><div style="font-size:26px;font-weight:900">' + d.phone + '</div></div>'
+      + '<div style="color:#fff;text-align:right;font-size:16px;opacity:0.8">더몬스터학원<br>광주 계림동</div></div></div>';
 
     // === 슬라이드 4: 교육 정보 (각 항목 1줄 요약) ===
     h += '<div class="s" style="background:#1a1a2e;display:flex;flex-direction:column;color:#fff">'
