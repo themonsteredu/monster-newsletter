@@ -15,9 +15,9 @@ const INIT = {
   coaching_subj: '국어 / 사회 / 과학 / 한국사 / 세계사',
   img1: '', img2: '', img3: '',
   schedules: [
-    { date: '5/1', event: '어린이날 행사 + 창의수학 퀴즈대회' },
-    { date: '5/4', event: '학원 휴무일' },
-    { date: '5/5', event: '어린이날 휴원' },
+    { date: '5/1', event: '어린이날 행사 + 창의수학 퀴즈대회', img: '' },
+    { date: '5/4', event: '학원 휴무일', img: '' },
+    { date: '5/5', event: '어린이날 휴원', img: '' },
   ],
   edu: [
     { id: mk(), lb: '교육과정', lc: 'b', ct: '올해 초5·6, 중2 교육과정이 바뀌었어요', body: '2022 개정 교육과정이 올해 초등 5·6학년, 중학교 2학년에 적용되었습니다.\n수학은 4개 영역으로 재편되어 초등~중등 개념이 하나로 이어집니다.' },
@@ -35,7 +35,15 @@ export default function Page() {
   const [newsOpen, setNewsOpen] = useState(false);
   const set = (k, v) => setD(p => ({ ...p, [k]: v }));
 
-  const addSch = () => set('schedules', [...d.schedules, { date: '', event: '' }]);
+  const addSch = () => set('schedules', [...d.schedules, { date: '', event: '', img: '' }]);
+
+  const handleSchImg = (i, e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => uSch(i, 'img', ev.target.result);
+    reader.readAsDataURL(file);
+  };
   const rmSch = (i) => set('schedules', d.schedules.filter((_, j) => j !== i));
   const uSch = (i, f, v) => { const a = [...d.schedules]; a[i] = { ...a[i], [f]: v }; set('schedules', a); };
 
@@ -131,7 +139,9 @@ export default function Page() {
       + d.schedules.map(function(s) {
         return '<div style="display:flex;align-items:center;gap:2mm;background:#fef0e7;border-radius:2mm;padding:2mm 4mm">'
           + '<span style="color:#d35400;font-weight:800;font-size:10pt">' + s.date + '</span>'
-          + '<span style="font-size:9pt;color:#333">' + s.event + '</span></div>';
+          + '<span style="font-size:9pt;color:#333;flex:1">' + s.event + '</span>'
+          + (s.img ? '<img src="' + s.img + '" style="height:8mm;border-radius:1mm;object-fit:cover" />' : '')
+          + '</div>';
       }).join('') + '</div></div>';
 
     h += '<div style="background:linear-gradient(135deg,#d35400,#e67e22);color:#fff;text-align:center;padding:4mm;border-radius:3mm;font-weight:700;font-size:12pt">'
@@ -214,9 +224,11 @@ export default function Page() {
       + '<div class="t" style="background:#1a1a2e;color:#fff;padding:16px 24px;text-align:center;font-size:28px;font-weight:800">' + d.month + '월 주요 일정</div>'
       + '<div style="flex:1;padding:0;display:flex;flex-direction:column">'
       + d.schedules.map(function(s) {
-        return '<div style="flex:1;display:flex;align-items:center;gap:20px;padding:0 24px;border-bottom:2px solid #f0f0f0">'
-          + '<div style="background:#d35400;color:#fff;font-weight:900;padding:14px 22px;border-radius:12px;font-size:24px;min-width:70px;text-align:center">' + s.date + '</div>'
-          + '<div style="font-size:24px;font-weight:600;color:#222">' + s.event + '</div></div>';
+        return '<div style="flex:1;display:flex;align-items:center;gap:16px;padding:0 20px;border-bottom:2px solid #f0f0f0">'
+          + '<div style="background:#d35400;color:#fff;font-weight:900;padding:12px 18px;border-radius:12px;font-size:22px;min-width:60px;text-align:center">' + s.date + '</div>'
+          + '<div style="flex:1;font-size:22px;font-weight:600;color:#222">' + s.event + '</div>'
+          + (s.img ? '<div style="width:100px;height:70px;border-radius:8px;overflow:hidden;flex-shrink:0"><img src="' + s.img + '" style="width:100%;height:100%;object-fit:cover" /></div>' : '')
+          + '</div>';
       }).join('')
       + '</div>'
       + '<div style="background:linear-gradient(135deg,#d35400,#e67e22);padding:22px 32px;display:flex;justify-content:space-between;align-items:center">'
@@ -395,10 +407,22 @@ export default function Page() {
         {tab === 'schedule' && (
           <div style={{ background: '#fff', borderRadius: 12, padding: 24, display: 'flex', flexDirection: 'column', gap: 12 }}>
             {d.schedules.map((s, i) => (
-              <div key={i} style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                <input style={{ ...ip, width: 100 }} placeholder="날짜" value={s.date} onChange={e => uSch(i, 'date', e.target.value)} />
-                <input style={{ ...ip, flex: 1 }} placeholder="일정" value={s.event} onChange={e => uSch(i, 'event', e.target.value)} />
-                <button onClick={() => rmSch(i)} style={{ background: '#c0392b', color: '#fff', border: 'none', borderRadius: 8, padding: '8px 12px', cursor: 'pointer' }}>삭제</button>
+              <div key={i} style={{ border: '1px solid #eee', borderRadius: 8, padding: 12 }}>
+                <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: s.img ? 8 : 0 }}>
+                  <input style={{ ...ip, width: 100 }} placeholder="날짜" value={s.date} onChange={e => uSch(i, 'date', e.target.value)} />
+                  <input style={{ ...ip, flex: 1 }} placeholder="일정" value={s.event} onChange={e => uSch(i, 'event', e.target.value)} />
+                  <label style={{ background: '#2c3e50', color: '#fff', borderRadius: 8, padding: '8px 10px', cursor: 'pointer', fontSize: 12, whiteSpace: 'nowrap' }}>
+                    사진
+                    <input type="file" accept="image/*" onChange={e => handleSchImg(i, e)} style={{ display: 'none' }} />
+                  </label>
+                  <button onClick={() => rmSch(i)} style={{ background: '#c0392b', color: '#fff', border: 'none', borderRadius: 8, padding: '8px 12px', cursor: 'pointer' }}>삭제</button>
+                </div>
+                {s.img && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <img src={s.img} style={{ height: 60, borderRadius: 6, objectFit: 'cover' }} />
+                    <button onClick={() => uSch(i, 'img', '')} style={{ background: '#c0392b', color: '#fff', border: 'none', borderRadius: 6, padding: '4px 8px', cursor: 'pointer', fontSize: 11 }}>삭제</button>
+                  </div>
+                )}
               </div>
             ))}
             <button onClick={addSch} style={{ background: '#2c3e50', color: '#fff', border: 'none', borderRadius: 8, padding: '10px', cursor: 'pointer', fontWeight: 700 }}>+ 일정 추가</button>
