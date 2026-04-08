@@ -168,31 +168,32 @@ export default function Page() {
       + '<div style="background:#1a1a2e;color:#fff;padding:28px 40px;display:flex;justify-content:space-between;align-items:center">'
       + '<span style="font-size:26px;font-weight:800">이달의 학원 소식</span>'
       + '<span style="background:#d35400;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600">' + d.month + '월호</span></div>'
-      // 카드들
-      + '<div style="flex:1;padding:20px 30px;display:flex;flex-direction:column;gap:12px">'
-      // 학습 FLOW - 큰 카드
-      + '<div style="background:#fff;border-radius:16px;padding:22px;border-left:6px solid #d35400;flex:1;display:flex;flex-direction:column;justify-content:center">'
-      + '<div style="font-size:13px;color:#d35400;font-weight:800;letter-spacing:2px;margin-bottom:10px">STUDY FLOW</div>'
-      + '<div style="font-size:22px;font-weight:800;color:#1a1a2e;margin-bottom:16px">학습 흐름 관리</div>'
-      + '<div style="background:#fef5ee;border-radius:10px;padding:16px;margin-bottom:10px">'
-      + '<div style="font-size:14px;color:#d35400;font-weight:700;margin-bottom:6px">초등부</div>'
-      + '<div style="font-size:16px;line-height:1.6;color:#333">' + d.flow_elem + '</div></div>'
-      + '<div style="background:#f0f4ff;border-radius:10px;padding:16px">'
-      + '<div style="font-size:14px;color:#2c3e50;font-weight:700;margin-bottom:6px">중고등부</div>'
-      + '<div style="font-size:16px;line-height:1.6;color:#333">' + d.flow_mid + '</div></div>'
-      + '</div>'
-      // 하단 2개 카드
-      + '<div style="display:flex;gap:16px">'
-      + '<div style="flex:1;background:#fff;border-radius:16px;padding:20px;border-left:6px solid #2c3e50">'
-      + '<div style="font-size:13px;color:#2c3e50;font-weight:800;letter-spacing:1px;margin-bottom:8px">TEST & REPORT</div>'
-      + '<div style="font-size:18px;font-weight:800;color:#1a1a2e;margin-bottom:10px">월말테스트</div>'
-      + '<div style="font-size:14px;line-height:1.7;color:#444">' + d.test_desc + '</div></div>'
-      + '<div style="flex:1;background:#fff;border-radius:16px;padding:20px;border-left:6px solid #27ae60">'
-      + '<div style="font-size:13px;color:#27ae60;font-weight:800;letter-spacing:1px;margin-bottom:8px">COACHING</div>'
-      + '<div style="font-size:18px;font-weight:800;color:#1a1a2e;margin-bottom:10px">교과서 코칭</div>'
-      + '<div style="font-size:14px;line-height:1.7;color:#444">' + d.coaching_desc + '</div>'
-      + '<div style="margin-top:8px;font-size:13px;color:#666">' + d.coaching_subj + '</div></div>'
-      + '</div></div></div>';
+      // 카드들 - justify-content:space-between으로 균등 배분
+      + '<div style="flex:1;padding:20px 30px;display:flex;flex-direction:column;justify-content:space-between">'
+      // 학습 FLOW
+      + '<div style="background:#fff;border-radius:16px;padding:22px;border-left:6px solid #d35400">'
+      + '<div style="display:flex;align-items:center;gap:10px;margin-bottom:14px"><div style="font-size:13px;color:#d35400;font-weight:800;letter-spacing:2px">STUDY FLOW</div><div style="flex:1;height:2px;background:#fef5ee"></div><div style="font-size:18px;font-weight:800;color:#1a1a2e">학습 흐름 관리</div></div>'
+      + '<div style="display:flex;gap:10px">'
+      + '<div style="flex:1;background:#fef5ee;border-radius:10px;padding:14px">'
+      + '<div style="font-size:13px;color:#d35400;font-weight:700;margin-bottom:6px">초등부</div>'
+      + '<div style="font-size:15px;line-height:1.6;color:#333">' + d.flow_elem + '</div></div>'
+      + '<div style="flex:1;background:#f0f4ff;border-radius:10px;padding:14px">'
+      + '<div style="font-size:13px;color:#2c3e50;font-weight:700;margin-bottom:6px">중고등부</div>'
+      + '<div style="font-size:15px;line-height:1.6;color:#333">' + d.flow_mid + '</div></div>'
+      + '</div></div>'
+      // 월말테스트
+      + '<div style="background:#fff;border-radius:16px;padding:22px;border-left:6px solid #2c3e50">'
+      + '<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><div style="font-size:13px;color:#2c3e50;font-weight:800;letter-spacing:1px">TEST & REPORT</div><div style="flex:1;height:2px;background:#eef2f7"></div><div style="font-size:18px;font-weight:800;color:#1a1a2e">월말테스트</div></div>'
+      + '<div style="font-size:15px;line-height:1.7;color:#444">' + d.test_desc + '</div></div>'
+      // 교과서 코칭
+      + '<div style="background:#fff;border-radius:16px;padding:22px;border-left:6px solid #27ae60">'
+      + '<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><div style="font-size:13px;color:#27ae60;font-weight:800;letter-spacing:1px">COACHING</div><div style="flex:1;height:2px;background:#edf7ee"></div><div style="font-size:18px;font-weight:800;color:#1a1a2e">교과서 코칭</div></div>'
+      + '<div style="font-size:15px;line-height:1.7;color:#444">' + d.coaching_desc + '</div>'
+      + '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px">' + d.coaching_subj.split(' / ').map(function(s) { return '<span style="background:#edf7ee;color:#27ae60;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600">' + s + '</span>'; }).join('') + '</div></div>'
+      // 상담 미니 바
+      + '<div style="background:linear-gradient(135deg,#d35400,#e67e22);color:#fff;border-radius:12px;padding:14px 22px;display:flex;justify-content:space-between;align-items:center">'
+      + '<span style="font-size:14px;font-weight:600">교육 상담 문의</span><span style="font-size:20px;font-weight:800">' + d.phone + '</span></div>'
+      + '</div></div>';
 
     // Slide 3 - 일정 + 교육정보 + CTA
     h += '<div class="slide" style="background:#f5f4ef;padding:0;display:flex;flex-direction:column">'
