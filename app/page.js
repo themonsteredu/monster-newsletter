@@ -146,7 +146,7 @@ export default function Page() {
     var W = 720, H = 1080;
     var css = mapleFonts + '*{margin:0;padding:0;box-sizing:border-box}'
       + '@page{size:' + W + 'px ' + H + 'px;margin:0}'
-      + 'body{margin:0;font-family:' + bodyFont + ';background:#888}'
+      + 'body{margin:0;font-family:' + bodyFont + ';background:#fff}'
       + '.s{width:' + W + 'px;height:' + H + 'px;overflow:hidden;position:relative;page-break-after:always;margin:0 auto}'
       + '.t{font-family:' + titleFont + '}';
     var h = '<!DOCTYPE html><html><head><meta charset="utf-8"><style>' + css + '</style></head><body>';
@@ -165,7 +165,7 @@ export default function Page() {
       + '<span style="font-size:24px;font-weight:800;color:#e67e22">' + d.phone + '</span></div></div>';
 
     // === 슬라이드 2: 학원 소식 ===
-    h += '<div class="s" style="background:#f5f4ef;display:flex;flex-direction:column">'
+    h += '<div class="s" style="background:#fff;display:flex;flex-direction:column">'
       + '<div class="t" style="background:#1a1a2e;color:#fff;padding:24px 36px;text-align:center;font-size:30px;font-weight:800">이달의 학원 소식</div>'
       + '<div style="flex:1;padding:20px 24px;display:flex;flex-direction:column;gap:14px">'
       // 학습 FLOW
@@ -190,7 +190,7 @@ export default function Page() {
       + '</div></div>';
 
     // === 슬라이드 3: 일정 ===
-    h += '<div class="s" style="background:#f5f4ef;display:flex;flex-direction:column">'
+    h += '<div class="s" style="background:#fff;display:flex;flex-direction:column">'
       + '<div class="t" style="background:#1a1a2e;color:#fff;padding:18px 36px;text-align:center;font-size:28px;font-weight:800">' + d.month + '월 주요 일정</div>'
       + '<div style="flex:1;padding:16px 20px;display:flex;flex-direction:column;justify-content:center;gap:0">'
       + d.schedules.map(function(s) {
@@ -226,11 +226,11 @@ export default function Page() {
   const genDG = () => {
     var h = '<!DOCTYPE html><html><head><meta charset="utf-8"><style>'
       + mapleFonts
-      + 'body{margin:0;font-family:' + bodyFont + ';display:flex;justify-content:center;align-items:center;min-height:100vh;background:#555}'
+      + 'body{margin:0;font-family:' + bodyFont + ';display:flex;justify-content:center;align-items:center;min-height:100vh;background:#fff}'
       + '.t{font-family:' + titleFont + '}'
       + '</style></head><body>';
 
-    h += '<div style="width:1080px;height:1080px;background:#f5f4ef;position:relative;overflow:hidden;display:flex;flex-direction:column">';
+    h += '<div style="width:1080px;height:1080px;background:#fff;position:relative;overflow:hidden;display:flex;flex-direction:column">';
 
     // 상단 헤더 (진한 네이비)
     h += '<div style="background:linear-gradient(135deg,#0f0f23,#1a1a3e);padding:32px 44px 28px;display:flex;justify-content:space-between;align-items:center">'
