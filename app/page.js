@@ -84,7 +84,7 @@ export default function Page() {
       + '<span>MONTHLY NEWSLETTER</span><span>' + d.year + '.' + d.month + '</span></div>'
       + '<div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:15mm 18mm">'
       + '<div style="font-size:12pt;letter-spacing:8px;opacity:0.4;margin-bottom:6mm">THE MONSTER</div>'
-      + '<div style="font-family:' + titleFont + ';font-size:28pt;font-weight:900;line-height:1.4;margin-bottom:8mm">' + d.hl.replace(/\n/g,'<br>') + '</div>'
+      + '<div style="font-family:' + titleFont + ';font-size:28pt;font-weight:900;line-height:1.4;margin-bottom:8mm;word-break:keep-all">' + d.hl.replace(/\n/g,'<br>') + '</div>'
       + '<div style="width:15mm;height:1mm;background:#d35400;margin-bottom:8mm"></div>'
       + '<div style="font-size:12pt;line-height:2;opacity:0.8">' + d.intro.replace(/\n/g,'<br>') + '</div></div>'
       + '<div style="background:rgba(0,0,0,0.4);padding:4mm 18mm;display:flex;justify-content:space-between">'
@@ -156,7 +156,7 @@ export default function Page() {
       + '<div style="background:#d35400;padding:16px 36px;text-align:center;font-size:16px;font-weight:700;letter-spacing:3px">' + d.year + '년 ' + d.month + '월호 NEWSLETTER</div>'
       + '<div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px 48px">'
       + '<div style="font-size:20px;letter-spacing:10px;opacity:0.35;margin-bottom:28px">THE MONSTER</div>'
-      + '<div class="t" style="font-size:48px;font-weight:900;line-height:1.35;margin-bottom:32px">' + d.hl.replace(/\n/g,'<br>') + '</div>'
+      + '<div class="t" style="font-size:44px;font-weight:900;line-height:1.4;margin-bottom:32px;word-break:keep-all">' + d.hl.replace(/\n/g,'<br>') + '</div>'
       + '<div style="width:80px;height:4px;background:#d35400;border-radius:2px;margin-bottom:32px"></div>'
       + '<div style="font-size:22px;line-height:1.8;opacity:0.7">' + d.intro.replace(/\n/g,'<br>') + '</div>'
       + '</div>'
@@ -244,7 +244,7 @@ export default function Page() {
     // 상단 큰 카드 - 헤드라인
     h += '<div style="background:#fff;border-radius:16px;padding:28px 32px;border-left:6px solid #d35400;display:flex;align-items:center;gap:24px">'
       + '<div style="flex:1"><div style="font-size:13px;color:#d35400;font-weight:800;letter-spacing:2px;margin-bottom:6px">HEADLINE</div>'
-      + '<div class="t" style="font-size:22px;font-weight:800;color:#1a1a2e;line-height:1.5">' + d.hl.replace(/\n/g,'<br>') + '</div></div>'
+      + '<div class="t" style="font-size:22px;font-weight:800;color:#1a1a2e;line-height:1.5;word-break:keep-all">' + d.hl.replace(/\n/g,'<br>') + '</div></div>'
       + '<div style="width:4px;height:60px;background:linear-gradient(to bottom,#d35400,transparent);border-radius:2px"></div></div>';
 
     // 3칸 카드 행
