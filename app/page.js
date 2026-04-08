@@ -13,6 +13,7 @@ const INIT = {
   test_desc: '매월 마지막 주 금요일 테스트 → 오답 분류 → 다음 달 첫주 카톡 레포트 발송',
   coaching_desc: '교과서 길들이기 6단계로 비수학 과목도 꼼꼼히!',
   coaching_subj: '국어 / 사회 / 과학 / 한국사 / 세계사',
+  img1: '', img2: '', img3: '',
   schedules: [
     { date: '5/1', event: '어린이날 행사 + 창의수학 퀴즈대회' },
     { date: '5/4', event: '학원 휴무일' },
@@ -51,6 +52,14 @@ export default function Page() {
     } catch { setNews([]); }
     setNewsLoading(false);
     setNewsOpen(true);
+  };
+
+  const handleImg = (key, e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => set(key, ev.target.result);
+    reader.readAsDataURL(file);
   };
 
   const addNewsToEdu = (item) => {
@@ -110,6 +119,13 @@ export default function Page() {
       + '<div style="margin-top:4mm;font-size:10pt;line-height:1.7">' + d.coaching_desc + '</div>'
       + '<div style="margin-top:2mm;font-size:9pt;color:#666">' + d.coaching_subj + '</div></div></div>';
 
+    var imgs = [d.img1, d.img2, d.img3].filter(function(x) { return x; });
+    if (imgs.length > 0) {
+      h += '<div style="display:flex;gap:3mm;margin-bottom:3mm">' + imgs.map(function(src) {
+        return '<div style="flex:1;height:28mm;border-radius:3mm;overflow:hidden"><img src="' + src + '" style="width:100%;height:100%;object-fit:cover" /></div>';
+      }).join('') + '</div>';
+    }
+
     h += '<div class="cd" style="border-left:4px solid #c0392b"><div class="lb" style="background:#c0392b">' + d.month + '월 일정</div>'
       + '<div style="margin-top:4mm;display:flex;flex-wrap:wrap;gap:2mm">'
       + d.schedules.map(function(s) {
@@ -164,6 +180,8 @@ export default function Page() {
       + '<span style="font-size:18px;opacity:0.6">광주 계림동 더몬스터학원</span>'
       + '<span style="font-size:24px;font-weight:800;color:#e67e22">' + d.phone + '</span></div></div>';
 
+    var imgs = [d.img1, d.img2, d.img3].filter(function(x) { return x; });
+
     // === 슬라이드 2: 학원 소식 ===
     h += '<div class="s" style="background:#fff;display:flex;flex-direction:column">'
       + '<div class="t" style="background:#1a1a2e;color:#fff;padding:16px 24px;text-align:center;font-size:28px;font-weight:800">이달의 학원 소식</div>'
@@ -184,6 +202,8 @@ export default function Page() {
       + '<div style="font-size:16px;color:#27ae60;font-weight:800;margin-bottom:10px">교과서 코칭</div>'
       + '<div style="font-size:20px;line-height:1.6;color:#222;margin-bottom:12px">' + d.coaching_desc + '</div>'
       + '<div style="display:flex;gap:8px;flex-wrap:wrap">' + d.coaching_subj.split(' / ').map(function(s) { return '<span style="background:#edf7ee;color:#27ae60;padding:6px 16px;border-radius:20px;font-size:16px;font-weight:700">' + s + '</span>'; }).join('') + '</div></div>'
+      // 이미지
+      + (imgs.length > 0 ? '<div style="display:flex;gap:8px">' + imgs.map(function(src) { return '<div style="flex:1;height:100px;border-radius:8px;overflow:hidden"><img src="' + src + '" style="width:100%;height:100%;object-fit:cover" /></div>'; }).join('') + '</div>' : '')
       // CTA
       + '<div style="background:linear-gradient(135deg,#d35400,#e67e22);color:#fff;border-radius:8px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center">'
       + '<span style="font-size:18px;font-weight:600">교육 상담</span><span style="font-size:26px;font-weight:900">' + d.phone + '</span></div>'
@@ -356,6 +376,19 @@ export default function Page() {
               <textarea style={ta} rows={2} value={d.coaching_desc} onChange={e => set('coaching_desc', e.target.value)} /></label>
             <label><span style={{ color: '#27ae60', fontWeight: 700 }}>코칭 과목</span>
               <input style={ip} value={d.coaching_subj} onChange={e => set('coaching_subj', e.target.value)} /></label>
+            <div style={{ borderTop: '2px solid #eee', paddingTop: 12, marginTop: 4 }}>
+              <div style={{ fontWeight: 700, marginBottom: 8, fontSize: 15 }}>사진 첨부</div>
+              {['img1','img2','img3'].map((k, i) => (
+                <div key={k} style={{ marginBottom: 10 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <span style={{ fontSize: 13, fontWeight: 600, color: '#555' }}>사진 {i+1}</span>
+                    <input type="file" accept="image/*" onChange={e => handleImg(k, e)} style={{ fontSize: 13 }} />
+                    {d[k] && <button onClick={() => set(k, '')} style={{ background: '#c0392b', color: '#fff', border: 'none', borderRadius: 6, padding: '4px 10px', cursor: 'pointer', fontSize: 12 }}>삭제</button>}
+                  </div>
+                  {d[k] && <img src={d[k]} style={{ marginTop: 6, maxWidth: '100%', maxHeight: 120, borderRadius: 8, objectFit: 'cover' }} />}
+                </div>
+              ))}
+            </div>
           </div>
         )}
 
