@@ -192,11 +192,11 @@ export default function Page() {
     // === 슬라이드 3: 일정 ===
     h += '<div class="s" style="background:#fff;display:flex;flex-direction:column">'
       + '<div class="t" style="background:#1a1a2e;color:#fff;padding:16px 24px;text-align:center;font-size:28px;font-weight:800">' + d.month + '월 주요 일정</div>'
-      + '<div style="flex:1;padding:10px 12px;display:flex;flex-direction:column;justify-content:center;gap:0">'
+      + '<div style="flex:1;padding:0;display:flex;flex-direction:column">'
       + d.schedules.map(function(s) {
-        return '<div style="background:#fff;border-radius:8px;padding:12px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px">'
-          + '<div style="background:#d35400;color:#fff;font-weight:900;padding:10px 16px;border-radius:10px;font-size:20px;min-width:60px;text-align:center">' + s.date + '</div>'
-          + '<div style="font-size:20px;font-weight:600;color:#222">' + s.event + '</div></div>';
+        return '<div style="flex:1;display:flex;align-items:center;gap:20px;padding:0 24px;border-bottom:2px solid #f0f0f0">'
+          + '<div style="background:#d35400;color:#fff;font-weight:900;padding:14px 22px;border-radius:12px;font-size:24px;min-width:70px;text-align:center">' + s.date + '</div>'
+          + '<div style="font-size:24px;font-weight:600;color:#222">' + s.event + '</div></div>';
       }).join('')
       + '</div>'
       + '<div style="background:linear-gradient(135deg,#d35400,#e67e22);padding:22px 32px;display:flex;justify-content:space-between;align-items:center">'
