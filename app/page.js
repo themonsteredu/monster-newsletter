@@ -138,92 +138,82 @@ export default function Page() {
   };
 
   const genKakao = () => {
-    var css = 'body{margin:0;font-family:"Pretendard",sans-serif;display:flex;flex-wrap:wrap;gap:24px;padding:24px;background:#555;justify-content:center}'
-      + '.slide{width:720px;height:1080px;position:relative;overflow:hidden;flex-shrink:0}';
-
+    var W = 720, H = 1080;
+    var css = '*{margin:0;padding:0;box-sizing:border-box}'
+      + '@page{size:' + W + 'px ' + H + 'px;margin:0}'
+      + 'body{margin:0;font-family:-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:#888}'
+      + '.s{width:' + W + 'px;height:' + H + 'px;overflow:hidden;position:relative;page-break-after:always;margin:0 auto}';
     var h = '<!DOCTYPE html><html><head><meta charset="utf-8"><style>' + css + '</style></head><body>';
 
-    // Slide 1 - Cover (임팩트 있는 표지)
-    h += '<div class="slide" style="background:linear-gradient(160deg,#0f0f23 0%,#1a1a3e 40%,#2d1a0f 100%);color:#fff;padding:0;display:flex;flex-direction:column">'
-      // 상단 장식 바
-      + '<div style="background:#d35400;padding:14px 40px;display:flex;justify-content:space-between;align-items:center">'
-      + '<span style="font-size:13px;font-weight:600;letter-spacing:2px">MONTHLY NEWSLETTER</span>'
-      + '<span style="font-size:13px;font-weight:600">' + d.year + '.' + d.month + '</span></div>'
-      // 메인 콘텐츠
-      + '<div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:50px 44px">'
-      + '<div style="font-size:15px;letter-spacing:8px;opacity:0.4;margin-bottom:20px">THE MONSTER</div>'
-      + '<div style="font-size:44px;font-weight:900;line-height:1.4;margin-bottom:24px">' + d.hl.replace(/\n/g,'<br>') + '</div>'
-      + '<div style="width:60px;height:4px;background:#d35400;margin-bottom:24px"></div>'
-      + '<div style="font-size:17px;line-height:1.9;opacity:0.75">' + d.intro.replace(/\n/g,'<br>') + '</div>'
+    // === 슬라이드 1: 표지 ===
+    h += '<div class="s" style="background:linear-gradient(160deg,#0f0f23,#1a1a3e 50%,#2d1a0f);color:#fff;display:flex;flex-direction:column">'
+      + '<div style="background:#d35400;padding:16px 36px;text-align:center;font-size:16px;font-weight:700;letter-spacing:3px">' + d.year + '년 ' + d.month + '월호 NEWSLETTER</div>'
+      + '<div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px 48px">'
+      + '<div style="font-size:20px;letter-spacing:10px;opacity:0.35;margin-bottom:28px">THE MONSTER</div>'
+      + '<div style="font-size:48px;font-weight:900;line-height:1.35;margin-bottom:32px">' + d.hl.replace(/\n/g,'<br>') + '</div>'
+      + '<div style="width:80px;height:4px;background:#d35400;border-radius:2px;margin-bottom:32px"></div>'
+      + '<div style="font-size:22px;line-height:1.8;opacity:0.7">' + d.intro.replace(/\n/g,'<br>') + '</div>'
       + '</div>'
-      // 하단 바
-      + '<div style="background:rgba(0,0,0,0.4);padding:24px 50px;display:flex;justify-content:space-between;align-items:center">'
-      + '<span style="font-size:14px;opacity:0.6">광주 계림동 더몬스터학원</span>'
-      + '<span style="font-size:18px;font-weight:700;color:#e67e22">' + d.phone + '</span></div>'
-      + '</div>';
+      + '<div style="background:rgba(0,0,0,0.5);padding:22px 36px;display:flex;justify-content:space-between;align-items:center">'
+      + '<span style="font-size:18px;opacity:0.6">광주 계림동 더몬스터학원</span>'
+      + '<span style="font-size:24px;font-weight:800;color:#e67e22">' + d.phone + '</span></div></div>';
 
-    // Slide 2 - 소식 카드 (꽉 찬 레이아웃)
-    h += '<div class="slide" style="background:#f5f4ef;padding:0;display:flex;flex-direction:column">'
-      // 헤더
-      + '<div style="background:#1a1a2e;color:#fff;padding:28px 40px;display:flex;justify-content:space-between;align-items:center">'
-      + '<span style="font-size:26px;font-weight:800">이달의 학원 소식</span>'
-      + '<span style="background:#d35400;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600">' + d.month + '월호</span></div>'
-      // 카드들 - justify-content:space-between으로 균등 배분
-      + '<div style="flex:1;padding:20px 30px;display:flex;flex-direction:column;justify-content:space-between">'
+    // === 슬라이드 2: 학원 소식 ===
+    h += '<div class="s" style="background:#f5f4ef;display:flex;flex-direction:column">'
+      + '<div style="background:#1a1a2e;color:#fff;padding:24px 36px;text-align:center;font-size:30px;font-weight:800">이달의 학원 소식</div>'
+      + '<div style="flex:1;padding:24px 28px;display:flex;flex-direction:column;justify-content:space-between">'
       // 학습 FLOW
-      + '<div style="background:#fff;border-radius:16px;padding:22px;border-left:6px solid #d35400">'
-      + '<div style="display:flex;align-items:center;gap:10px;margin-bottom:14px"><div style="font-size:13px;color:#d35400;font-weight:800;letter-spacing:2px">STUDY FLOW</div><div style="flex:1;height:2px;background:#fef5ee"></div><div style="font-size:18px;font-weight:800;color:#1a1a2e">학습 흐름 관리</div></div>'
-      + '<div style="display:flex;gap:10px">'
-      + '<div style="flex:1;background:#fef5ee;border-radius:10px;padding:14px">'
-      + '<div style="font-size:13px;color:#d35400;font-weight:700;margin-bottom:6px">초등부</div>'
-      + '<div style="font-size:15px;line-height:1.6;color:#333">' + d.flow_elem + '</div></div>'
-      + '<div style="flex:1;background:#f0f4ff;border-radius:10px;padding:14px">'
-      + '<div style="font-size:13px;color:#2c3e50;font-weight:700;margin-bottom:6px">중고등부</div>'
-      + '<div style="font-size:15px;line-height:1.6;color:#333">' + d.flow_mid + '</div></div>'
+      + '<div style="background:#fff;border-radius:14px;padding:24px 28px;border-left:6px solid #d35400">'
+      + '<div style="font-size:16px;color:#d35400;font-weight:800;margin-bottom:12px">학습 FLOW</div>'
+      + '<div style="display:flex;gap:12px">'
+      + '<div style="flex:1;background:#fef5ee;border-radius:10px;padding:16px"><div style="font-size:16px;color:#d35400;font-weight:700;margin-bottom:8px">초등부</div><div style="font-size:18px;line-height:1.5;color:#222">' + d.flow_elem + '</div></div>'
+      + '<div style="flex:1;background:#eef2f7;border-radius:10px;padding:16px"><div style="font-size:16px;color:#2c3e50;font-weight:700;margin-bottom:8px">중고등부</div><div style="font-size:18px;line-height:1.5;color:#222">' + d.flow_mid + '</div></div>'
       + '</div></div>'
       // 월말테스트
-      + '<div style="background:#fff;border-radius:16px;padding:22px;border-left:6px solid #2c3e50">'
-      + '<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><div style="font-size:13px;color:#2c3e50;font-weight:800;letter-spacing:1px">TEST & REPORT</div><div style="flex:1;height:2px;background:#eef2f7"></div><div style="font-size:18px;font-weight:800;color:#1a1a2e">월말테스트</div></div>'
-      + '<div style="font-size:15px;line-height:1.7;color:#444">' + d.test_desc + '</div></div>'
+      + '<div style="background:#fff;border-radius:14px;padding:24px 28px;border-left:6px solid #2c3e50">'
+      + '<div style="font-size:16px;color:#2c3e50;font-weight:800;margin-bottom:10px">월말테스트 & 레포트</div>'
+      + '<div style="font-size:20px;line-height:1.6;color:#222">' + d.test_desc + '</div></div>'
       // 교과서 코칭
-      + '<div style="background:#fff;border-radius:16px;padding:22px;border-left:6px solid #27ae60">'
-      + '<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><div style="font-size:13px;color:#27ae60;font-weight:800;letter-spacing:1px">COACHING</div><div style="flex:1;height:2px;background:#edf7ee"></div><div style="font-size:18px;font-weight:800;color:#1a1a2e">교과서 코칭</div></div>'
-      + '<div style="font-size:15px;line-height:1.7;color:#444">' + d.coaching_desc + '</div>'
-      + '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px">' + d.coaching_subj.split(' / ').map(function(s) { return '<span style="background:#edf7ee;color:#27ae60;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600">' + s + '</span>'; }).join('') + '</div></div>'
-      // 상담 미니 바
-      + '<div style="background:linear-gradient(135deg,#d35400,#e67e22);color:#fff;border-radius:12px;padding:14px 22px;display:flex;justify-content:space-between;align-items:center">'
-      + '<span style="font-size:14px;font-weight:600">교육 상담 문의</span><span style="font-size:20px;font-weight:800">' + d.phone + '</span></div>'
+      + '<div style="background:#fff;border-radius:14px;padding:24px 28px;border-left:6px solid #27ae60">'
+      + '<div style="font-size:16px;color:#27ae60;font-weight:800;margin-bottom:10px">교과서 코칭</div>'
+      + '<div style="font-size:20px;line-height:1.6;color:#222;margin-bottom:12px">' + d.coaching_desc + '</div>'
+      + '<div style="display:flex;gap:8px;flex-wrap:wrap">' + d.coaching_subj.split(' / ').map(function(s) { return '<span style="background:#edf7ee;color:#27ae60;padding:6px 16px;border-radius:20px;font-size:16px;font-weight:700">' + s + '</span>'; }).join('') + '</div></div>'
+      // CTA
+      + '<div style="background:linear-gradient(135deg,#d35400,#e67e22);color:#fff;border-radius:14px;padding:18px 28px;display:flex;justify-content:space-between;align-items:center">'
+      + '<span style="font-size:18px;font-weight:600">교육 상담</span><span style="font-size:26px;font-weight:900">' + d.phone + '</span></div>'
       + '</div></div>';
 
-    // Slide 3 - 일정 + 교육정보 + CTA
-    h += '<div class="slide" style="background:#f5f4ef;padding:0;display:flex;flex-direction:column">'
-      + '<div style="background:#1a1a2e;color:#fff;padding:28px 40px">'
-      + '<span style="font-size:26px;font-weight:800">' + d.month + '월 일정 & 교육 정보</span></div>'
-      + '<div style="flex:1;padding:28px 36px;display:flex;flex-direction:column;gap:16px">'
-      // 일정 카드
-      + '<div style="background:#fff;border-radius:16px;padding:28px;border-left:6px solid #c0392b">'
-      + '<div style="font-size:20px;font-weight:800;color:#1a1a2e;margin-bottom:16px">' + d.month + '월 주요 일정</div>'
+    // === 슬라이드 3: 일정 ===
+    h += '<div class="s" style="background:#f5f4ef;display:flex;flex-direction:column">'
+      + '<div style="background:#1a1a2e;color:#fff;padding:24px 36px;text-align:center;font-size:30px;font-weight:800">' + d.month + '월 주요 일정</div>'
+      + '<div style="flex:1;padding:28px;display:flex;flex-direction:column;justify-content:center;gap:0">'
       + d.schedules.map(function(s) {
-        return '<div style="display:flex;align-items:center;padding:10px 0;border-bottom:1px solid #f0f0f0">'
-          + '<div style="background:#fef0e7;color:#d35400;font-weight:800;padding:6px 14px;border-radius:8px;font-size:15px;min-width:60px;text-align:center">' + s.date + '</div>'
-          + '<div style="margin-left:16px;font-size:16px;color:#333">' + s.event + '</div></div>';
+        return '<div style="background:#fff;border-radius:14px;padding:22px 28px;margin-bottom:14px;display:flex;align-items:center;gap:20px">'
+          + '<div style="background:#d35400;color:#fff;font-weight:900;padding:12px 20px;border-radius:12px;font-size:22px;min-width:70px;text-align:center">' + s.date + '</div>'
+          + '<div style="font-size:22px;font-weight:600;color:#222">' + s.event + '</div></div>';
       }).join('')
       + '</div>'
-      // 교육정보 요약
-      + '<div style="display:flex;gap:12px;flex:1">'
-      + d.edu.slice(0,3).map(function(e) {
-        return '<div style="flex:1;background:#fff;border-radius:16px;padding:20px;border-top:4px solid ' + CM[e.lc] + ';display:flex;flex-direction:column">'
-          + '<div style="font-size:11px;color:' + CM[e.lc] + ';font-weight:700;margin-bottom:6px">' + e.lb + '</div>'
-          + '<div style="font-size:15px;font-weight:800;color:#1a1a2e;margin-bottom:8px;line-height:1.4">' + e.ct + '</div>'
-          + '<div style="font-size:12px;line-height:1.5;color:#666;flex:1">' + e.body.split('\n')[0] + '</div></div>';
+      + '<div style="background:linear-gradient(135deg,#d35400,#e67e22);padding:28px 36px;display:flex;justify-content:space-between;align-items:center">'
+      + '<div style="color:#fff"><div style="font-size:18px;opacity:0.8;margin-bottom:4px">교육 상담 문의</div><div style="font-size:28px;font-weight:900">' + d.phone + '</div></div>'
+      + '<div style="color:#fff;text-align:right;font-size:18px;opacity:0.8">더몬스터학원<br>광주 계림동</div></div></div>';
+
+    // === 슬라이드 4: 교육 정보 (각 항목 1줄 요약) ===
+    h += '<div class="s" style="background:#1a1a2e;display:flex;flex-direction:column;color:#fff">'
+      + '<div style="padding:32px 36px 0;text-align:center"><div style="font-size:18px;letter-spacing:6px;opacity:0.3;margin-bottom:12px">THE MONSTER</div>'
+      + '<div style="font-size:32px;font-weight:800;margin-bottom:8px">학부모님을 위한 교육 정보</div>'
+      + '<div style="width:60px;height:3px;background:#d35400;margin:0 auto"></div></div>'
+      + '<div style="flex:1;padding:28px 32px;display:flex;flex-direction:column;justify-content:center;gap:16px">'
+      + d.edu.map(function(e) {
+        var short = e.body.split('\n')[0];
+        if (short.length > 60) short = short.slice(0, 58) + '...';
+        return '<div style="background:rgba(255,255,255,0.08);border-radius:14px;padding:24px 28px;border-left:5px solid ' + CM[e.lc] + '">'
+          + '<div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">'
+          + '<span style="background:' + CM[e.lc] + ';color:#fff;padding:4px 14px;border-radius:20px;font-size:14px;font-weight:700">' + e.lb + '</span></div>'
+          + '<div style="font-size:24px;font-weight:800;line-height:1.4;margin-bottom:8px">' + e.ct + '</div>'
+          + '<div style="font-size:18px;line-height:1.6;opacity:0.7">' + short + '</div></div>';
       }).join('')
-      + '</div></div>'
-      // CTA 하단
-      + '<div style="background:linear-gradient(135deg,#d35400,#e67e22);padding:28px 40px;display:flex;justify-content:space-between;align-items:center">'
-      + '<div><div style="color:rgba(255,255,255,0.8);font-size:14px;margin-bottom:4px">교육 상담 문의</div>'
-      + '<div style="color:#fff;font-size:24px;font-weight:800">' + d.phone + '</div></div>'
-      + '<div style="color:#fff;font-size:14px;text-align:right;opacity:0.8">광주 계림동<br>더몬스터학원</div></div>'
-      + '</div>';
+      + '</div>'
+      + '<div style="padding:20px 36px;text-align:center;font-size:14px;opacity:0.3">' + d.sources + '</div></div>';
 
     h += '</body></html>';
     return h;
