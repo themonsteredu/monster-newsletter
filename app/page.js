@@ -63,10 +63,10 @@ export default function Page() {
   const nl = (t) => t.split('\n').filter(Boolean).map(l => '<p style="margin-bottom:3mm">' + l + '</p>').join('');
   const schRows = d.schedules.map(s => '<tr><td><b>' + s.date + '</b></td><td>' + s.event + '</td></tr>').join('');
 
-  const mapleFonts = '@font-face{font-family:"MapleBold";src:url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff") format("woff");font-weight:700;font-display:swap}'
-    + '@font-face{font-family:"MapleLight";src:url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFLight.woff") format("woff");font-weight:400;font-display:swap}';
-  var titleFont = '"MapleBold","Apple SD Gothic Neo",sans-serif';
-  var bodyFont = '"MapleLight","Apple SD Gothic Neo",sans-serif';
+  const mapleFonts = "@font-face{font-family:'MapleBold';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');font-weight:700;font-display:swap}"
+    + "@font-face{font-family:'MapleLight';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFLight.woff') format('woff');font-weight:400;font-display:swap}";
+  var titleFont = "'MapleBold','Apple SD Gothic Neo',sans-serif";
+  var bodyFont = "'MapleLight','Apple SD Gothic Neo',sans-serif";
 
   const genA4 = () => {
     var h = '<!DOCTYPE html><html><head><meta charset="utf-8">'
@@ -167,7 +167,7 @@ export default function Page() {
     // === 슬라이드 2: 학원 소식 ===
     h += '<div class="s" style="background:#f5f4ef;display:flex;flex-direction:column">'
       + '<div class="t" style="background:#1a1a2e;color:#fff;padding:24px 36px;text-align:center;font-size:30px;font-weight:800">이달의 학원 소식</div>'
-      + '<div style="flex:1;padding:24px 28px;display:flex;flex-direction:column;justify-content:space-between">'
+      + '<div style="flex:1;padding:20px 24px;display:flex;flex-direction:column;gap:14px">'
       // 학습 FLOW
       + '<div style="background:#fff;border-radius:14px;padding:24px 28px;border-left:6px solid #d35400">'
       + '<div style="font-size:16px;color:#d35400;font-weight:800;margin-bottom:12px">학습 FLOW</div>'
@@ -192,7 +192,7 @@ export default function Page() {
     // === 슬라이드 3: 일정 ===
     h += '<div class="s" style="background:#f5f4ef;display:flex;flex-direction:column">'
       + '<div class="t" style="background:#1a1a2e;color:#fff;padding:24px 36px;text-align:center;font-size:30px;font-weight:800">' + d.month + '월 주요 일정</div>'
-      + '<div style="flex:1;padding:28px;display:flex;flex-direction:column;justify-content:center;gap:0">'
+      + '<div style="flex:1;padding:20px 24px;display:flex;flex-direction:column;justify-content:center;gap:0">'
       + d.schedules.map(function(s) {
         return '<div style="background:#fff;border-radius:14px;padding:22px 28px;margin-bottom:14px;display:flex;align-items:center;gap:20px">'
           + '<div style="background:#d35400;color:#fff;font-weight:900;padding:12px 20px;border-radius:12px;font-size:22px;min-width:70px;text-align:center">' + s.date + '</div>'
@@ -208,7 +208,7 @@ export default function Page() {
       + '<div style="padding:32px 36px 0;text-align:center"><div style="font-size:18px;letter-spacing:6px;opacity:0.3;margin-bottom:12px">THE MONSTER</div>'
       + '<div class="t" style="font-size:32px;font-weight:800;margin-bottom:8px">학부모님을 위한 교육 정보</div>'
       + '<div style="width:60px;height:3px;background:#d35400;margin:0 auto"></div></div>'
-      + '<div style="flex:1;padding:28px 32px;display:flex;flex-direction:column;justify-content:center;gap:16px">'
+      + '<div style="flex:1;padding:20px 28px;display:flex;flex-direction:column;justify-content:center;gap:14px">'
       + d.edu.map(function(e) {
         return '<div style="background:rgba(255,255,255,0.08);border-radius:14px;padding:22px 26px;border-left:5px solid ' + CM[e.lc] + '">'
           + '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">'
@@ -233,7 +233,7 @@ export default function Page() {
     h += '<div style="width:1080px;height:1080px;background:#f5f4ef;position:relative;overflow:hidden;display:flex;flex-direction:column">';
 
     // 상단 헤더 (진한 네이비)
-    h += '<div style="background:linear-gradient(135deg,#0f0f23,#1a1a3e);padding:40px 50px 36px;display:flex;justify-content:space-between;align-items:center">'
+    h += '<div style="background:linear-gradient(135deg,#0f0f23,#1a1a3e);padding:32px 44px 28px;display:flex;justify-content:space-between;align-items:center">'
       + '<div><div style="font-size:14px;color:rgba(255,255,255,0.4);letter-spacing:6px;margin-bottom:6px">THE MONSTER</div>'
       + '<div class="t" style="font-size:34px;font-weight:900;color:#fff">' + d.year + '년 ' + d.month + '월 소식</div></div>'
       + '<div style="background:#d35400;color:#fff;padding:12px 28px;border-radius:30px;font-size:18px;font-weight:800">' + d.month + '월호</div></div>';
