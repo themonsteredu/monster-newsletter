@@ -166,35 +166,35 @@ export default function Page() {
 
     // === 슬라이드 2: 학원 소식 ===
     h += '<div class="s" style="background:#fff;display:flex;flex-direction:column">'
-      + '<div class="t" style="background:#1a1a2e;color:#fff;padding:24px 36px;text-align:center;font-size:30px;font-weight:800">이달의 학원 소식</div>'
-      + '<div style="flex:1;padding:20px 24px;display:flex;flex-direction:column;gap:14px">'
+      + '<div class="t" style="background:#1a1a2e;color:#fff;padding:16px 24px;text-align:center;font-size:28px;font-weight:800">이달의 학원 소식</div>'
+      + '<div style="flex:1;padding:10px 12px;display:flex;flex-direction:column;gap:8px">'
       // 학습 FLOW
-      + '<div style="background:#fff;border-radius:14px;padding:24px 28px;border-left:6px solid #d35400">'
+      + '<div style="background:#fff;border-radius:8px;padding:14px 16px;border-left:6px solid #d35400">'
       + '<div style="font-size:16px;color:#d35400;font-weight:800;margin-bottom:12px">학습 FLOW</div>'
       + '<div style="display:flex;gap:12px">'
       + '<div style="flex:1;background:#fef5ee;border-radius:10px;padding:16px"><div style="font-size:16px;color:#d35400;font-weight:700;margin-bottom:8px">초등부</div><div style="font-size:18px;line-height:1.5;color:#222">' + d.flow_elem + '</div></div>'
       + '<div style="flex:1;background:#eef2f7;border-radius:10px;padding:16px"><div style="font-size:16px;color:#2c3e50;font-weight:700;margin-bottom:8px">중고등부</div><div style="font-size:18px;line-height:1.5;color:#222">' + d.flow_mid + '</div></div>'
       + '</div></div>'
       // 월말테스트
-      + '<div style="background:#fff;border-radius:14px;padding:24px 28px;border-left:6px solid #2c3e50">'
+      + '<div style="background:#fff;border-radius:8px;padding:14px 16px;border-left:6px solid #2c3e50">'
       + '<div style="font-size:16px;color:#2c3e50;font-weight:800;margin-bottom:10px">월말테스트 & 레포트</div>'
       + '<div style="font-size:20px;line-height:1.6;color:#222">' + d.test_desc + '</div></div>'
       // 교과서 코칭
-      + '<div style="background:#fff;border-radius:14px;padding:24px 28px;border-left:6px solid #27ae60">'
+      + '<div style="background:#fff;border-radius:8px;padding:14px 16px;border-left:6px solid #27ae60">'
       + '<div style="font-size:16px;color:#27ae60;font-weight:800;margin-bottom:10px">교과서 코칭</div>'
       + '<div style="font-size:20px;line-height:1.6;color:#222;margin-bottom:12px">' + d.coaching_desc + '</div>'
       + '<div style="display:flex;gap:8px;flex-wrap:wrap">' + d.coaching_subj.split(' / ').map(function(s) { return '<span style="background:#edf7ee;color:#27ae60;padding:6px 16px;border-radius:20px;font-size:16px;font-weight:700">' + s + '</span>'; }).join('') + '</div></div>'
       // CTA
-      + '<div style="background:linear-gradient(135deg,#d35400,#e67e22);color:#fff;border-radius:14px;padding:18px 28px;display:flex;justify-content:space-between;align-items:center">'
+      + '<div style="background:linear-gradient(135deg,#d35400,#e67e22);color:#fff;border-radius:8px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center">'
       + '<span style="font-size:18px;font-weight:600">교육 상담</span><span style="font-size:26px;font-weight:900">' + d.phone + '</span></div>'
       + '</div></div>';
 
     // === 슬라이드 3: 일정 ===
     h += '<div class="s" style="background:#fff;display:flex;flex-direction:column">'
-      + '<div class="t" style="background:#1a1a2e;color:#fff;padding:18px 36px;text-align:center;font-size:28px;font-weight:800">' + d.month + '월 주요 일정</div>'
-      + '<div style="flex:1;padding:16px 20px;display:flex;flex-direction:column;justify-content:center;gap:0">'
+      + '<div class="t" style="background:#1a1a2e;color:#fff;padding:16px 24px;text-align:center;font-size:28px;font-weight:800">' + d.month + '월 주요 일정</div>'
+      + '<div style="flex:1;padding:10px 12px;display:flex;flex-direction:column;justify-content:center;gap:0">'
       + d.schedules.map(function(s) {
-        return '<div style="background:#fff;border-radius:12px;padding:16px 20px;margin-bottom:10px;display:flex;align-items:center;gap:16px">'
+        return '<div style="background:#fff;border-radius:8px;padding:12px 14px;margin-bottom:6px;display:flex;align-items:center;gap:12px">'
           + '<div style="background:#d35400;color:#fff;font-weight:900;padding:10px 16px;border-radius:10px;font-size:20px;min-width:60px;text-align:center">' + s.date + '</div>'
           + '<div style="font-size:20px;font-weight:600;color:#222">' + s.event + '</div></div>';
       }).join('')
@@ -208,9 +208,9 @@ export default function Page() {
       + '<div style="padding:32px 36px 0;text-align:center"><div style="font-size:18px;letter-spacing:6px;opacity:0.3;margin-bottom:12px">THE MONSTER</div>'
       + '<div class="t" style="font-size:32px;font-weight:800;margin-bottom:8px">학부모님을 위한 교육 정보</div>'
       + '<div style="width:60px;height:3px;background:#d35400;margin:0 auto"></div></div>'
-      + '<div style="flex:1;padding:20px 28px;display:flex;flex-direction:column;justify-content:center;gap:14px">'
+      + '<div style="flex:1;padding:10px 16px;display:flex;flex-direction:column;justify-content:center;gap:8px">'
       + d.edu.map(function(e) {
-        return '<div style="background:rgba(255,255,255,0.08);border-radius:14px;padding:22px 26px;border-left:5px solid ' + CM[e.lc] + '">'
+        return '<div style="background:rgba(255,255,255,0.08);border-radius:8px;padding:14px 16px;border-left:5px solid ' + CM[e.lc] + '">'
           + '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">'
           + '<span style="background:' + CM[e.lc] + ';color:#fff;padding:4px 14px;border-radius:20px;font-size:14px;font-weight:700">' + e.lb + '</span></div>'
           + '<div class="t" style="font-size:22px;font-weight:800;line-height:1.4;margin-bottom:8px">' + e.ct + '</div>'
@@ -239,7 +239,7 @@ export default function Page() {
       + '<div style="background:#d35400;color:#fff;padding:12px 28px;border-radius:30px;font-size:18px;font-weight:800">' + d.month + '월호</div></div>';
 
     // 메인 그리드 영역
-    h += '<div style="flex:1;padding:24px 40px;display:flex;flex-direction:column;gap:16px">';
+    h += '<div style="flex:1;padding:12px 20px;display:flex;flex-direction:column;gap:10px">';
 
     // 상단 큰 카드 - 헤드라인
     h += '<div style="background:#fff;border-radius:16px;padding:28px 32px;border-left:6px solid #d35400;display:flex;align-items:center;gap:24px">'
