@@ -122,7 +122,7 @@ export default function Page() {
     var imgs = [d.img1, d.img2, d.img3].filter(function(x) { return x; });
     if (imgs.length > 0) {
       h += '<div style="display:flex;gap:3mm;margin-bottom:3mm">' + imgs.map(function(src) {
-        return '<div style="flex:1;height:28mm;border-radius:3mm;overflow:hidden"><img src="' + src + '" style="width:100%;height:100%;object-fit:cover" /></div>';
+        return '<div style="flex:1;border-radius:3mm;overflow:hidden"><img src="' + src + '" style="width:100%;display:block;border-radius:3mm" /></div>';
       }).join('') + '</div>';
     }
 
@@ -203,7 +203,7 @@ export default function Page() {
       + '<div style="font-size:20px;line-height:1.6;color:#222;margin-bottom:12px">' + d.coaching_desc + '</div>'
       + '<div style="display:flex;gap:8px;flex-wrap:wrap">' + d.coaching_subj.split(' / ').map(function(s) { return '<span style="background:#edf7ee;color:#27ae60;padding:6px 16px;border-radius:20px;font-size:16px;font-weight:700">' + s + '</span>'; }).join('') + '</div></div>'
       // 이미지
-      + (imgs.length > 0 ? '<div style="display:flex;gap:8px">' + imgs.map(function(src) { return '<div style="flex:1;height:100px;border-radius:8px;overflow:hidden"><img src="' + src + '" style="width:100%;height:100%;object-fit:cover" /></div>'; }).join('') + '</div>' : '')
+      + (imgs.length > 0 ? '<div style="display:flex;gap:8px">' + imgs.map(function(src) { return '<div style="flex:1;border-radius:8px;overflow:hidden"><img src="' + src + '" style="width:100%;display:block;border-radius:8px" /></div>'; }).join('') + '</div>' : '')
       // CTA
       + '<div style="background:linear-gradient(135deg,#d35400,#e67e22);color:#fff;border-radius:8px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center">'
       + '<span style="font-size:18px;font-weight:600">교육 상담</span><span style="font-size:26px;font-weight:900">' + d.phone + '</span></div>'
